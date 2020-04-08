@@ -1,41 +1,46 @@
-import React from 'react';
-import './Countdown.less';
+import React from "react";
+import "./Countdown.less";
 
 interface ICountDownProps {
-  timer: number,
-  duration: number,
-  onfinish: () => void
+  timer: number;
+  duration: number;
+  onfinish: () => void;
 }
 
 interface IContDownStates {
-  restTime: number
+  restTime: number;
 }
 
 let timerID: NodeJS.Timeout;
 
-class CountDown extends React.Component <ICountDownProps, IContDownStates> {
-
+class CountDown extends React.Component<ICountDownProps, IContDownStates> {
   constructor(props: ICountDownProps) {
     super(props);
     this.state = {
-      restTime: this.props.timer
+      restTime: this.props.timer,
     };
-  };
+  }
 
-  componentDidMount(): void {this.startCountDown();};
+  componentDidMount(): void {
+    this.startCountDown();
+  }
 
-  componentWillUnmount(): void {this.onTimeOver();};
+  componentWillUnmount(): void {
+    this.onTimeOver();
+  }
 
   get clock() {
     const minutes = Math.floor(this.state.restTime / 1000 / 60);
-    const seconds = Math.floor(this.state.restTime / 1000 % 60);
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  };
+    const seconds = Math.floor((this.state.restTime / 1000) % 60);
+    return `${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }
 
   startCountDown = () => {
     timerID = setInterval(() => {
       const restTime = this.state.restTime;
-      this.setState({restTime: restTime - 1000});
+      this.setState({ restTime: restTime - 1000 });
       document.title = `${this.clock} - 有一个番茄正在进行`;
       if (restTime < 1000) {
         this.onTimeOver();
@@ -46,6 +51,7 @@ class CountDown extends React.Component <ICountDownProps, IContDownStates> {
 
   onTimeOver = () => {
     this.props.onfinish();
+    document.title = `Tomatodo - 你的番茄土豆`;
     clearInterval(timerID);
   };
 
@@ -54,7 +60,7 @@ class CountDown extends React.Component <ICountDownProps, IContDownStates> {
     return (
       <div className="countdown">
         <span>{this.clock}</span>
-        <div className="progress" style={{width: `${percent * 100}%`}}/>
+        <div className="progress" style={{ width: `${percent * 100}%` }} />
       </div>
     );
   }
