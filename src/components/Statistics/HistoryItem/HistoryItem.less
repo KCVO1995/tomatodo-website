@@ -1,0 +1,47 @@
+.item {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  border-radius: 2px;
+
+  > .action {
+    flex-shrink: 1;
+    cursor: pointer;
+    color: #fe346e;
+    display: none;
+  }
+
+  &:hover {
+    background: #f4f4f4;
+    transition: all .2s;
+    > .action {display: block;}
+  }
+
+  > .editing {display: block;}
+
+  > .detail {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding-right: 15px;
+
+    > .time {
+      color: #999;
+      margin-right: 8px;
+      flex-shrink: 1;
+    }
+
+    > input {
+      flex: 1;
+      padding: 5px;
+      border: 1px solid #dddddd;
+      border-radius: 2px;
+      outline: none;
+    }
+  }
+
+
+}
+

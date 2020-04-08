@@ -1,0 +1,10 @@
+export const ADD_TODO = 'ADD_TODO';
+export const INIT_TODOS = 'INIT_TODOS';
+export const UPDATE_TODO = 'UPDATE_TODO';
+export const EDIT_TODO = 'EDIT_TODO';
+
+export const START_TOMATO = 'START_TOMATO';
+export const INIT_TOMATOES = 'INIT_TOMATOES';
+export const UPDATE_TOMATO = 'UPDATE_TOMATO';
+export const EDIT_TOMATO = 'EDIT_TOMATO';
+
